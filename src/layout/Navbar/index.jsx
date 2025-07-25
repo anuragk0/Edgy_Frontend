@@ -21,7 +21,7 @@ const Navbar = () => {
   };
 
   if (!authChecked) {
-    return null; // or <Loading />
+    return null; 
   }
 
   if (loading) {

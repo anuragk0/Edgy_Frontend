@@ -187,7 +187,7 @@ const userSlice = createSlice({
                 state.success = false;
                 state.error = true;
                 state.message = action.payload;
-                // Still clear the auth state even if the API call fails coz they intent to logout
+             
                 state.user = {};
                 state.token = null;
                 state.isAuthenticated = false;

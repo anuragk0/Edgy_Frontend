@@ -41,17 +41,29 @@ const SignUp = () => {
     const [isActive, setIsActive] = useState(false)
 
     useEffect(() => {
+        if (currentStep === 2) {
+            setTimer(120);
+            setIsActive(false);
+        }
+    }, [currentStep]);
+
+    useEffect(() => {
+        if (currentStep !== 2) return; 
         if (timer === 0) {
             setIsActive(true)
-            return
+            return;
         }
-
         const interval = setInterval(() => {
-            setTimer(prev => prev - 1)
-        }, 1000)
-
-        return () => clearInterval(interval)
-    }, [timer])
+            setTimer(prev => {
+                if (prev <= 1) {
+                    clearInterval(interval);
+                    return 0;
+                }
+                return prev - 1;
+            });
+        }, 1000);
+        return () => clearInterval(interval);
+    }, [currentStep, timer]);
 
     useEffect(() => {
         if (success && currentStep === 1) {
@@ -142,13 +154,13 @@ const SignUp = () => {
                     alert('Please enter a valid email address')
                     return
                 }
-                // Send both name and email
+          
                 dispatch(initiateSignup({ 
                     name: formData.name,
                     email: formData.email 
                 }))
             } else if (currentStep === 2) {
-                // Validate OTP
+   
                 if (otpValues.some(value => !value)) {
                     toast.error('Please enter the complete verification code', {
                         position: "top-right",
@@ -213,7 +225,7 @@ const SignUp = () => {
                     {currentStep === 1 && (
                         <div className="form-step">
                             <h3>Enter Your Details</h3>
-                            {/* {error && <div className="error-message">{message}</div>} */}
+                  
                             <div className="form-group">
                                 <label htmlFor="name">Name</label>
                                 <input

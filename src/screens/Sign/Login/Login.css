@@ -13,7 +13,6 @@
   --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* Text Selection Styling */
 ::selection {
   background-color: var(--primary-blue);
   color: var(--secondary-white);
@@ -177,7 +176,7 @@
   text-decoration: underline;
 }
 
-/* Responsive Design */
+
 @media (max-width: 480px) {
   .login-form-container {
     padding: 1.5rem;

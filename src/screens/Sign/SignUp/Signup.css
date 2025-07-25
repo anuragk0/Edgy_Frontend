@@ -164,7 +164,7 @@
   }
 }
 
-/* Progress indicator */
+
 .step-indicator {
   display: flex;
   justify-content: space-between;
@@ -195,7 +195,6 @@
   color: var(--secondary-white);
 }
 
-/* Responsive Design */
 @media (max-width: 480px) {
   .signup-form-container {
     padding: 1.5rem;
@@ -217,7 +216,7 @@
   }
 }
 
-/* Loading state */
+
 .loading {
   position: relative;
   pointer-events: none;
