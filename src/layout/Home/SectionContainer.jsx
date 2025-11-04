@@ -31,8 +31,10 @@ const SectionContainer = () => {
 
 
     useEffect(() => {
-        dispatch(getSections());
-    }, [dispatch]);
+        if (isAuthenticated) {
+            dispatch(getSections());
+        }
+    }, [dispatch, isAuthenticated]); 
 
 
     const filteredSections = sections?.filter(section => {

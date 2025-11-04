@@ -22,6 +22,13 @@ const sectionSlice = createSlice({
         },
         clearLoading: (state) => {
             state.loading = false;
+        },
+        clearSections: (state) => {  // Add this new reducer
+            state.sections = [];
+            state.currentSection = null;
+            state.error = false;
+            state.success = false;
+            state.message = "";
         }
     }, 
 
@@ -98,7 +105,8 @@ const sectionSlice = createSlice({
 export const {
     clearError,
     clearLoading,
-    clearSuccess
+    clearSuccess, 
+    clearSections
 } = sectionSlice.actions;
 
 export default sectionSlice.reducer;

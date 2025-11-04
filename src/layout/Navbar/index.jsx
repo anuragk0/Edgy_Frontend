@@ -2,6 +2,7 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../../../store/User/UserAction";
+import { clearSections } from "../../../store/Section/SectionReducer";  // Add this import
 import Loading from "../../components/Loading";
 import "./Navbar.css";
 
@@ -14,6 +15,7 @@ const Navbar = () => {
   const handleLogout = async () => {
     try {
       await dispatch(logout()).unwrap();
+      dispatch(clearSections());
       navigate('/login');
     } catch (error) {
       console.error('Logout failed:', error);
